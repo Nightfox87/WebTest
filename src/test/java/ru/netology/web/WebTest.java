@@ -34,11 +34,11 @@ public class WebTest {
     @Test
     void test() {
         driver.get("http://localhost:9999/");
-        driver.findElement(By.cssSelector("span[data-test-id='name'] input")).sendKeys("Иванов Иван");
-        driver.findElement(By.cssSelector("span[data-test-id='phone'] input")).sendKeys("+79991111111");
-        driver.findElement(By.className("checkbox__box")).click();
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов-Петров Иван");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79991111111");
+        driver.findElement(By.cssSelector("[data-test-id='agreement'] span")).click();
         driver.findElement(By.className("button__text")).click();
-        String text = driver.findElement(By.className("paragraph")).getText();
+        String text = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText();
         Assertions.assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
     }
 }
